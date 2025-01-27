@@ -1,0 +1,52 @@
+name: Deploy into Roští.cz
+
+on:
+  workflow_run:
+    workflows: ["Sync, build and deploy Plasmic app"] # Replace with your Plasmic workflow name
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      HOST: ssh.rosti.cz
+      USER: app
+      PORT: 13689
+      NODE_VERSION: 22.9.0
+
+    steps:
+      # Step 1: Checkout the GitHub repository to get the latest code
+      - uses: actions/checkout@v3
+
+      # Step 2: Set up SSH key for server access
+      - uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.ROSTI_DEPLOY_SSH_KEY }}
+
+      # Step 3: Setup SSH known hosts to prevent connection issues
+      - name: Setup hostkey
+        run: |
+          echo "ssh.rosti.cz ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzezclu8RSvdqL834KzxLC51PTLps1IFtUQMyoO/nGWWfDHHN/DNoZiZLbSQdogCrDsj0alxNfwpKYOSUaQ/l6R7/rbfT9pTZcJnVI+xhrwryZN2XHAkaAHsDPdNdUKkmccPmAP4B3M+JkJoF9C/blTN3WCxSTZ8Bn/XDIZE/10Y7Hd3cKKspvY6PTTIccnOKuejSXWu3VuHDNWrPNInUrpotQrhGRaNYVcSelxV7GvTARavCzt2YZESSCWr7Zc/48tdBvmxzbH8Ks8pmefm40Cm94YyAcHVMerJo54QF+6IWTDUZuk3X5Rd2Row9WuTZ8ZV2odnmmVfQLD2ai4FHL" > ./known_hosts
+
+      # Step 4: Copy code (sync repository to the server)
+      - name: Copy code
+        run: |
+          rsync -ae "ssh -o UserKnownHostsFile=./known_hosts -p $PORT" \
+            --exclude=.git \
+            --exclude=next.config.mjs \
+            --exclude=pages/plasmic-host.tsx \
+            --exclude=tsconfig.json \
+            ./ $USER@$HOST:/srv/app/
+
+      # Step 5: Run the build command on the server
+      - name: Run build on server
+        run: |
+          ssh -o UserKnownHostsFile=./known_hosts -p $PORT $USER@$HOST "cd /srv/app && npm run build"
+
+      # Step 6: Reset things after the build is complete
+      - name: Reset server processes
+        run: |
+          ssh -o UserKnownHostsFile=./known_hosts -p $PORT $USER@$HOST supervisorctl reread
+          ssh -o UserKnownHostsFile=./known_hosts -p $PORT $USER@$HOST supervisorctl restart app
+          ssh -o UserKnownHostsFile=./known_hosts -p $PORT $USER@$HOST supervisorctl restart nginx

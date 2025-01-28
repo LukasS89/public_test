@@ -94,7 +94,6 @@ export type PlasmicEvent__OverridesType = {
   header?: Flex__<typeof Header>;
   categoryMenu?: Flex__<typeof CategoryMenu>;
   httpRestApiFetcher?: Flex__<typeof DataFetcher>;
-  sideEffect?: Flex__<typeof SideEffect>;
   pageMetadataOverride?: Flex__<typeof PlasmicHead>;
   h1?: Flex__<"h1">;
   h5?: Flex__<"h5">;
@@ -407,9 +406,10 @@ function PlasmicEvent__RenderFunc(props: {
                   <DataCtxReader__>
                     {$ctx => (
                       <SideEffect
-                        data-plasmic-name={"sideEffect"}
-                        data-plasmic-override={overrides.sideEffect}
-                        className={classNames("__wab_instance", sty.sideEffect)}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.sideEffect___9EsNk
+                        )}
                         onMount={async () => {
                           const $steps = {};
 
@@ -2500,6 +2500,32 @@ function PlasmicEvent__RenderFunc(props: {
               ) : null}
             </section>
           </section>
+          <SideEffect
+            className={classNames("__wab_instance", sty.sideEffect__o06O9)}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return undefined;
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -2512,7 +2538,6 @@ const PlasmicDescendants = {
     "header",
     "categoryMenu",
     "httpRestApiFetcher",
-    "sideEffect",
     "pageMetadataOverride",
     "h1",
     "h5",
@@ -2520,8 +2545,7 @@ const PlasmicDescendants = {
   ],
   header: ["header"],
   categoryMenu: ["categoryMenu"],
-  httpRestApiFetcher: ["httpRestApiFetcher", "sideEffect"],
-  sideEffect: ["sideEffect"],
+  httpRestApiFetcher: ["httpRestApiFetcher"],
   pageMetadataOverride: ["pageMetadataOverride"],
   h1: ["h1"],
   h5: ["h5"],
@@ -2535,7 +2559,6 @@ type NodeDefaultElementType = {
   header: typeof Header;
   categoryMenu: typeof CategoryMenu;
   httpRestApiFetcher: typeof DataFetcher;
-  sideEffect: typeof SideEffect;
   pageMetadataOverride: typeof PlasmicHead;
   h1: "h1";
   h5: "h5";
@@ -2605,7 +2628,6 @@ export const PlasmicEvent = Object.assign(
     header: makeNodeComponent("header"),
     categoryMenu: makeNodeComponent("categoryMenu"),
     httpRestApiFetcher: makeNodeComponent("httpRestApiFetcher"),
-    sideEffect: makeNodeComponent("sideEffect"),
     pageMetadataOverride: makeNodeComponent("pageMetadataOverride"),
     h1: makeNodeComponent("h1"),
     h5: makeNodeComponent("h5"),

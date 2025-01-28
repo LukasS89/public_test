@@ -343,7 +343,7 @@ function PlasmicRegistration__RenderFunc(props: {
                           <FormItemWrapper
                             className={classNames(
                               "__wab_instance",
-                              sty.formField__t4Bi
+                              sty.formField__aqHn
                             )}
                             label={"K\u0159estn\u00ed jm\u00e9no"}
                             name={"firstName"}
@@ -352,14 +352,14 @@ function PlasmicRegistration__RenderFunc(props: {
                             <AntdInput
                               className={classNames(
                                 "__wab_instance",
-                                sty.input__oRf48
+                                sty.input__uVgzL
                               )}
                             />
                           </FormItemWrapper>
                           <FormItemWrapper
                             className={classNames(
                               "__wab_instance",
-                              sty.formField___9OWYn
+                              sty.formField__yTrPn
                             )}
                             label={"P\u0159\u00edjmen\u00ed"}
                             name={"surName"}
@@ -368,14 +368,14 @@ function PlasmicRegistration__RenderFunc(props: {
                             <AntdInput
                               className={classNames(
                                 "__wab_instance",
-                                sty.input__nCHtE
+                                sty.input__zgw00
                               )}
                             />
                           </FormItemWrapper>
                           <FormItemWrapper
                             className={classNames(
                               "__wab_instance",
-                              sty.formField__bBcC8
+                              sty.formField__awlRr
                             )}
                             label={"U\u017eivatelsk\u00e9 jm\u00e9no"}
                             name={"userName"}
@@ -384,14 +384,14 @@ function PlasmicRegistration__RenderFunc(props: {
                             <AntdInput
                               className={classNames(
                                 "__wab_instance",
-                                sty.input__qLEaU
+                                sty.input__qinXm
                               )}
                             />
                           </FormItemWrapper>
                           <FormItemWrapper
                             className={classNames(
                               "__wab_instance",
-                              sty.formField__gew9B
+                              sty.formField__nph7U
                             )}
                             label={"P\u0159ihla\u0161ovac\u00ed e-mail"}
                             name={"email"}
@@ -400,14 +400,14 @@ function PlasmicRegistration__RenderFunc(props: {
                             <AntdInput
                               className={classNames(
                                 "__wab_instance",
-                                sty.input___3X76B
+                                sty.input__o7U8S
                               )}
                             />
                           </FormItemWrapper>
                           <FormItemWrapper
                             className={classNames(
                               "__wab_instance",
-                              sty.formField__dIv89
+                              sty.formField__sCqib
                             )}
                             initialValue={"password"}
                             label={"Heslo"}
@@ -416,14 +416,14 @@ function PlasmicRegistration__RenderFunc(props: {
                             <AntdPassword
                               className={classNames(
                                 "__wab_instance",
-                                sty.passwordInput__gk1DU
+                                sty.passwordInput__a0B50
                               )}
                             />
                           </FormItemWrapper>
                           <FormItemWrapper
                             className={classNames(
                               "__wab_instance",
-                              sty.formField__wDixN
+                              sty.formField__aviEx
                             )}
                             label={"Heslo znovu"}
                             name={"passCheck"}
@@ -432,7 +432,7 @@ function PlasmicRegistration__RenderFunc(props: {
                             <AntdPassword
                               className={classNames(
                                 "__wab_instance",
-                                sty.passwordInput__aWb8I
+                                sty.passwordInput__ezz6
                               )}
                             />
                           </FormItemWrapper>
@@ -449,7 +449,7 @@ function PlasmicRegistration__RenderFunc(props: {
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__j1WZj
+                                sty.text__ympQo
                               )}
                             >
                               {"Zaregistrovat se"}

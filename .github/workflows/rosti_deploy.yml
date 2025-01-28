@@ -1,18 +1,20 @@
 name: Deploy into Roští.cz
 
 on:
-    push:
-      branches: [main]
+  workflow_run:
+    workflows: ["Sync, build and deploy Plasmic app"] # Ensure this matches the name of your Plasmic workflow
+    types:
+      - completed
 
 jobs:
-    deploy:
-      runs-on: ubuntu-latest
-      env:
-        HOST: ssh.rosti.cz
-        USER: app
-        PORT: 13689
-        NODE_VERSION: 22.9.0
-      steps:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      HOST: ssh.rosti.cz
+      USER: app
+      PORT: 13689
+      NODE_VERSION: 22.9.0
+    steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
@@ -61,7 +63,7 @@ jobs:
               listen       0.0.0.0:8000;
               listen       [::]:8000;
               location / {
-                      proxy_pass         http://127.0.0.1:3000/; # Update this to port 3000
+                      proxy_pass         http://127.0.0.1:3000/; # Change to 3000 if you're using that
                       proxy_redirect     default;
                       proxy_set_header   X-Real-IP  \$remote_addr;
                       proxy_set_header   Host       \$host;

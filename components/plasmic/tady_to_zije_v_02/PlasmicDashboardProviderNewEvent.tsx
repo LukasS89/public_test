@@ -413,6 +413,12 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "mainLinks",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -853,126 +859,6 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                               $steps["setId"] = await $steps["setId"];
                             }
 
-                            $steps["supabaseUploadFile"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    dataOp: {
-                                      sourceId: "wdYFAdktabwm1cGWzppM7o",
-                                      opId: "c1d9b484-1806-41f6-b9a3-3fe38a929dd7",
-                                      userArgs: {
-                                        bucket: [
-                                          $ctx.userData.eventsLink,
-                                          $state.setId
-                                        ],
-                                        path: [
-                                          Math.random()
-                                            .toString(36)
-                                            .substr(2, 8)
-                                        ],
-                                        content: [$state.mainImage[0]],
-                                        contentType: ["image/webp"]
-                                      },
-                                      cacheKey: null,
-                                      invalidatedKeys: ["plasmic_refresh_all"],
-                                      roleId: null
-                                    }
-                                  };
-                                  return (async ({
-                                    dataOp,
-                                    continueOnError
-                                  }) => {
-                                    try {
-                                      const response =
-                                        await executePlasmicDataOp(dataOp, {
-                                          userAuthToken:
-                                            dataSourcesCtx?.userAuthToken,
-                                          user: dataSourcesCtx?.user
-                                        });
-                                      await plasmicInvalidate(
-                                        dataOp.invalidatedKeys
-                                      );
-                                      return response;
-                                    } catch (e) {
-                                      if (!continueOnError) {
-                                        throw e;
-                                      }
-                                      return e;
-                                    }
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["supabaseUploadFile"] != null &&
-                              typeof $steps["supabaseUploadFile"] ===
-                                "object" &&
-                              typeof $steps["supabaseUploadFile"].then ===
-                                "function"
-                            ) {
-                              $steps["supabaseUploadFile"] = await $steps[
-                                "supabaseUploadFile"
-                              ];
-                            }
-
-                            $steps["supabaseUploadThumbnail"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    dataOp: {
-                                      sourceId: "wdYFAdktabwm1cGWzppM7o",
-                                      opId: "778f8693-94ce-4ea1-8262-f0184d00f872",
-                                      userArgs: {
-                                        bucket: [
-                                          $ctx.userData.eventsLink,
-                                          $state.setId
-                                        ],
-                                        path: [
-                                          Math.random()
-                                            .toString(36)
-                                            .substr(2, 8)
-                                        ],
-                                        content: [$state.mainImage[1]],
-                                        contentType: ["image/webp"]
-                                      },
-                                      cacheKey: null,
-                                      invalidatedKeys: ["plasmic_refresh_all"],
-                                      roleId: null
-                                    }
-                                  };
-                                  return (async ({
-                                    dataOp,
-                                    continueOnError
-                                  }) => {
-                                    try {
-                                      const response =
-                                        await executePlasmicDataOp(dataOp, {
-                                          userAuthToken:
-                                            dataSourcesCtx?.userAuthToken,
-                                          user: dataSourcesCtx?.user
-                                        });
-                                      await plasmicInvalidate(
-                                        dataOp.invalidatedKeys
-                                      );
-                                      return response;
-                                    } catch (e) {
-                                      if (!continueOnError) {
-                                        throw e;
-                                      }
-                                      return e;
-                                    }
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["supabaseUploadThumbnail"] != null &&
-                              typeof $steps["supabaseUploadThumbnail"] ===
-                                "object" &&
-                              typeof $steps["supabaseUploadThumbnail"].then ===
-                                "function"
-                            ) {
-                              $steps["supabaseUploadThumbnail"] = await $steps[
-                                "supabaseUploadThumbnail"
-                              ];
-                            }
-
                             $steps["runActionOnUploadImages"] = true
                               ? (() => {
                                   const actionArgs = {
@@ -1048,21 +934,8 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                             subCategory: [
                                               $state.subCategorySelect.value
                                             ],
-                                            mainImage:
-                                              "https://rnrfdxtsdvmxhjsoqoid.supabase.co/storage/v1/object/public/eventsStorage/" +
-                                              $ctx.userData.eventsLink +
-                                              "/" +
-                                              $state.setId +
-                                              "/m/" +
-                                              $steps.supabaseUploadFile.path,
-                                            thumbnail:
-                                              "https://rnrfdxtsdvmxhjsoqoid.supabase.co/storage/v1/object/public/eventsStorage/" +
-                                              $ctx.userData.eventsLink +
-                                              "/" +
-                                              $state.setId +
-                                              "/t/" +
-                                              $steps.supabaseUploadThumbnail
-                                                .path,
+                                            mainImage: $state.mainLinks[0],
+                                            thumbnail: $state.mainLinks[1],
                                             gallery: $state.galeryLinks,
                                             webUrl: (() => {
                                               const name =
@@ -3329,7 +3202,7 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                     <React.Fragment>
                                       <React.Fragment>
                                         {
-                                          "P\u0159idejte fotografie do galerie (max. 10 fotek)"
+                                          "P\u0159idejte fotografie do galerie (min. 4, max. 10 fotek)"
                                         }
                                       </React.Fragment>
                                       <span
@@ -3924,8 +3797,53 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                           throw e;
                                         }
                                       })()}
-                                      onUploadUrls={async urls => {
+                                      mainImages={$state.mainImage}
+                                      onUploadUrls={async (urls, mainUrls) => {
                                         const $steps = {};
+
+                                        $steps["updateMainLinks"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: ["mainLinks"]
+                                                },
+                                                operation: 0,
+                                                value: mainUrls
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
+
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["updateMainLinks"] != null &&
+                                          typeof $steps["updateMainLinks"] ===
+                                            "object" &&
+                                          typeof $steps["updateMainLinks"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["updateMainLinks"] =
+                                            await $steps["updateMainLinks"];
+                                        }
 
                                         $steps["updateGaleryLinks"] = true
                                           ? (() => {

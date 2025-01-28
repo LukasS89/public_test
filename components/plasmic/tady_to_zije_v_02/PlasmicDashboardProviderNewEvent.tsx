@@ -497,39 +497,7 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                       sty.link__jceu2
                     )}
                     component={Link}
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["goToDashboardProvider"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              destination: `/provozovatel/${"activity"}`
-                            };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["goToDashboardProvider"] != null &&
-                        typeof $steps["goToDashboardProvider"] === "object" &&
-                        typeof $steps["goToDashboardProvider"].then ===
-                          "function"
-                      ) {
-                        $steps["goToDashboardProvider"] = await $steps[
-                          "goToDashboardProvider"
-                        ];
-                      }
-                    }}
+                    href={`/provozovatel/${"activity"}`}
                     platform={"nextjs"}
                   >
                     <h4

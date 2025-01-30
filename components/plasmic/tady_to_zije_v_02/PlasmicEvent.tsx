@@ -65,6 +65,7 @@ import { DataFetcher } from "@plasmicpkgs/plasmic-query";
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { PlasmicHead } from "@plasmicapp/react-web";
+import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
 import Button from "../../Button"; // plasmic-import: MFeYqTwC_Y94/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -98,7 +99,6 @@ export type PlasmicEvent__OverridesType = {
   pageMetadataOverride?: Flex__<typeof PlasmicHead>;
   h1?: Flex__<"h1">;
   h5?: Flex__<"h5">;
-  button?: Flex__<typeof Button>;
 };
 
 export interface DefaultEventProps {}
@@ -2130,7 +2130,137 @@ function PlasmicEvent__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(projectcss.all, sty.freeBox__rToiv)}
-                    />
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__dlTcG
+                        )}
+                        style={(() => {
+                          try {
+                            return {
+                              gap: "1.5vh"
+                            };
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()}
+                      >
+                        <h3
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.h3,
+                            projectcss.__wab_text,
+                            sty.h3__fQt9B
+                          )}
+                        >
+                          {"Kde ud\u00e1lost najdete"}
+                        </h3>
+                        <PlasmicLink__
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.a,
+                            sty.link__e4Fpk
+                          )}
+                          component={Link}
+                          platform={"nextjs"}
+                        >
+                          <PlasmicImg__
+                            alt={""}
+                            className={classNames(sty.img__tVws4)}
+                            displayHeight={"auto"}
+                            displayMaxHeight={"none"}
+                            displayMaxWidth={"100%"}
+                            displayMinHeight={"0"}
+                            displayMinWidth={"0"}
+                            displayWidth={"auto"}
+                            loading={"lazy"}
+                            src={{
+                              src: "/plasmic/tady_to_zije_v_02/images/testMapPng.png",
+                              fullWidth: 662,
+                              fullHeight: 355,
+                              aspectRatio: undefined
+                            }}
+                          />
+
+                          <PlasmicLink__
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.a,
+                              sty.link__h5Gbs
+                            )}
+                            component={Link}
+                            href={(() => {
+                              try {
+                                return $state.eventItem.locationUrl;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "https://maps.app.goo.gl/GpzKhTuZz36C7jYJA";
+                                }
+                                throw e;
+                              }
+                            })()}
+                            platform={"nextjs"}
+                            target={"_blank"}
+                          >
+                            <AntdButton
+                              className={classNames(
+                                "__wab_instance",
+                                sty.button__rHjGh
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__tV6US
+                                )}
+                              >
+                                {"Pod\u00edvat se na mapu"}
+                              </div>
+                            </AntdButton>
+                          </PlasmicLink__>
+                        </PlasmicLink__>
+                        <h4
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.h4,
+                            projectcss.__wab_text,
+                            sty.h4___5XrG
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (() => {
+                                  return $state.eventItem.adress.replace(
+                                    /,\s+/,
+                                    ",\n"
+                                  );
+                                })();
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "Adresa";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </h4>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ) : null}
@@ -2154,9 +2284,10 @@ function PlasmicEvent__RenderFunc(props: {
                     className={classNames(projectcss.all, sty.freeBox__njbn2)}
                   >
                     <Button
-                      data-plasmic-name={"button"}
-                      data-plasmic-override={overrides.button}
-                      className={classNames("__wab_instance", sty.button)}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.button__tHcbO
+                      )}
                       color={"white"}
                       onClick={async event => {
                         const $steps = {};
@@ -2541,8 +2672,7 @@ const PlasmicDescendants = {
     "sideEffect",
     "pageMetadataOverride",
     "h1",
-    "h5",
-    "button"
+    "h5"
   ],
   header: ["header"],
   categoryMenu: ["categoryMenu"],
@@ -2550,8 +2680,7 @@ const PlasmicDescendants = {
   sideEffect: ["sideEffect"],
   pageMetadataOverride: ["pageMetadataOverride"],
   h1: ["h1"],
-  h5: ["h5"],
-  button: ["button"]
+  h5: ["h5"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -2565,7 +2694,6 @@ type NodeDefaultElementType = {
   pageMetadataOverride: typeof PlasmicHead;
   h1: "h1";
   h5: "h5";
-  button: typeof Button;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -2635,7 +2763,6 @@ export const PlasmicEvent = Object.assign(
     pageMetadataOverride: makeNodeComponent("pageMetadataOverride"),
     h1: makeNodeComponent("h1"),
     h5: makeNodeComponent("h5"),
-    button: makeNodeComponent("button"),
 
     // Metadata about props expected for PlasmicEvent
     internalVariantProps: PlasmicEvent__VariantProps,

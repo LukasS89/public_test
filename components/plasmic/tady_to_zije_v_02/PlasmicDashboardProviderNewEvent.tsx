@@ -72,16 +72,16 @@ import { formHelpers as FormWrapper_Helpers } from "@plasmicpkgs/antd5/skinny/Fo
 import { UploadImages } from "@components/UploadImages"; // plasmic-import: 8eIqd6WAgMjU/codeComponent
 import { FormItemWrapper } from "@plasmicpkgs/antd5/skinny/FormItem";
 import TextInputWhite from "../../TextInputWhite"; // plasmic-import: BkB9iEume48d/component
+import TextAreaWhite from "../../TextAreaWhite"; // plasmic-import: bs5zwM1jg0ey/component
 import { CustomDatePicker } from "@components/CustomDatePicker"; // plasmic-import: VK1n1PVMidjU/codeComponent
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
 import { AntdCheckbox } from "@plasmicpkgs/antd5/skinny/registerCheckbox";
-import { AntdTextArea } from "@plasmicpkgs/antd5/skinny/registerInput";
-import { inputHelpers as AntdTextArea_Helpers } from "@plasmicpkgs/antd5/skinny/registerInput";
 import { AntdButton } from "@plasmicpkgs/antd5/skinny/registerButton";
+import { PasteClipboard } from "@components/PasteClipboard"; // plasmic-import: 1BC3HPtjmL5b/codeComponent
 import { UploadImage } from "@components/UploadImage"; // plasmic-import: tO0oon6_re-a/codeComponent
 import { UploadWrapper } from "@plasmicpkgs/antd5/skinny/registerUpload";
 import { DataFetcher } from "@plasmicpkgs/plasmic-query";
-import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantssdh9N1Hl4P9M } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: SDH9n1Hl4p9m/globalVariant
 
@@ -118,6 +118,7 @@ export type PlasmicDashboardProviderNewEvent__OverridesType = {
   form?: Flex__<typeof FormWrapper>;
   left?: Flex__<"div">;
   name?: Flex__<typeof TextInputWhite>;
+  description?: Flex__<typeof TextAreaWhite>;
   date2?: Flex__<typeof CustomDatePicker>;
   repeat?: Flex__<typeof AntdSelect>;
   startTime?: Flex__<typeof TextInputWhite>;
@@ -129,11 +130,7 @@ export type PlasmicDashboardProviderNewEvent__OverridesType = {
   checkbox2?: Flex__<typeof AntdCheckbox>;
   checkbox3?: Flex__<typeof AntdCheckbox>;
   checkbox4?: Flex__<typeof AntdCheckbox>;
-  checkbox5?: Flex__<typeof AntdCheckbox>;
-  checkbox6?: Flex__<typeof AntdCheckbox>;
-  checkbox7?: Flex__<typeof AntdCheckbox>;
-  checkbox8?: Flex__<typeof AntdCheckbox>;
-  street?: Flex__<typeof TextInputWhite>;
+  street2?: Flex__<typeof TextInputWhite>;
   citySelect?: Flex__<typeof AntdSelect>;
   adPop?: Flex__<typeof TextInputWhite>;
   adOr?: Flex__<typeof TextInputWhite>;
@@ -141,7 +138,8 @@ export type PlasmicDashboardProviderNewEvent__OverridesType = {
   categorySelect?: Flex__<typeof AntdSelect>;
   subCategory?: Flex__<typeof FormItemWrapper>;
   subCategorySelect?: Flex__<typeof AntdSelect>;
-  description?: Flex__<typeof AntdTextArea>;
+  mapLocation?: Flex__<typeof TextInputWhite>;
+  pasteClipboard?: Flex__<typeof PasteClipboard>;
   right?: Flex__<"div">;
   uploadImage?: Flex__<typeof UploadImage>;
   frame?: Flex__<"section">;
@@ -152,6 +150,7 @@ export type PlasmicDashboardProviderNewEvent__OverridesType = {
   uploadImages?: Flex__<typeof UploadImages>;
   left2?: Flex__<"div">;
   httpRestApiFetcher?: Flex__<typeof DataFetcher>;
+  sideEffect?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultDashboardProviderNewEventProps {}
@@ -233,7 +232,7 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "street.value",
+        path: "mapLocation.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
@@ -305,30 +304,6 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "checkbox5.checked",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "checkbox6.checked",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "checkbox7.checked",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "checkbox8.checked",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
         path: "date",
         type: "private",
         variableType: "dateString",
@@ -339,14 +314,6 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
-      },
-      {
-        path: "description.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
-
-        onMutate: generateOnMutateForSpec("value", AntdTextArea_Helpers)
       },
       {
         path: "subCategorySelect.value",
@@ -376,7 +343,7 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
         path: "setId",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "bbbbbbbb"
+        initFunc: ({ $props, $state, $queries, $ctx }) => ``
       },
       {
         path: "galeryLinks",
@@ -386,12 +353,6 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
       },
       {
         path: "finished",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
-      },
-      {
-        path: "variable",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
@@ -416,6 +377,18 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
       },
       {
         path: "mainLinks",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "street2.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "description.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
@@ -819,46 +792,6 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                           onFinish: async values => {
                             const $steps = {};
 
-                            $steps["setId"] = (
-                              $state.mainImage && $state.mainImage !== ""
-                                ? true
-                                : false
-                            )
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["setId"]
-                                    },
-                                    operation: 0,
-                                    value: Math.random()
-                                      .toString(36)
-                                      .substr(2, 8)
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["setId"] != null &&
-                              typeof $steps["setId"] === "object" &&
-                              typeof $steps["setId"].then === "function"
-                            ) {
-                              $steps["setId"] = await $steps["setId"];
-                            }
-
                             $steps["runActionOnUploadImages"] = true
                               ? (() => {
                                   const actionArgs = {
@@ -893,7 +826,7 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                       userArgs: {
                                         variables: [
                                           {
-                                            adress: `${$state.street.value} ${$state.adPop.value}/${$state.adOr.value}, ${$state.citySelect.value}`,
+                                            adress: `${$state.mapLocation.value} ${$state.adPop.value}/${$state.adOr.value}, ${$state.citySelect.value}`,
                                             category: (() => {
                                               const queryCache = JSON.parse(
                                                 localStorage.getItem(
@@ -948,7 +881,9 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                               return `${name}-${$state.setId}`;
                                             })(),
                                             description:
-                                              $state.description.value
+                                              $state.description.value,
+                                            locationUrl:
+                                              $state.mapLocation.value
                                           }
                                         ]
                                       },
@@ -1001,15 +936,14 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                         $state.galeryImages = "";
                                         $state.galeryLinks = "";
                                         $state.mainImage = "";
-                                        $state.setId = "";
                                         ($state.upload3 = { files: [] }),
-                                          ($state.fade = true);
-                                        $state.previewUrl =
-                                          typeof $state.name.value === "string"
-                                            ? $state.name.value
-                                                .replace(/\s+/g, "-")
-                                                .toLowerCase()
-                                            : "";
+                                          ($state.previewUrl =
+                                            typeof $state.name.value ===
+                                            "string"
+                                              ? $state.name.value
+                                                  .replace(/\s+/g, "-")
+                                                  .toLowerCase()
+                                              : "");
                                         const webUrlValue = `${name}-${$state.setId}`;
                                         return webUrlValue;
                                       })();
@@ -1026,6 +960,43 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                               typeof $steps["runCode"].then === "function"
                             ) {
                               $steps["runCode"] = await $steps["runCode"];
+                            }
+
+                            $steps["updateFade"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["fade"]
+                                    },
+                                    operation: 4
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    const oldValue = $stateGet(
+                                      objRoot,
+                                      variablePath
+                                    );
+                                    $stateSet(objRoot, variablePath, !oldValue);
+                                    return !oldValue;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateFade"] != null &&
+                              typeof $steps["updateFade"] === "object" &&
+                              typeof $steps["updateFade"].then === "function"
+                            ) {
+                              $steps["updateFade"] = await $steps["updateFade"];
                             }
 
                             $steps["runActionOnForm"] = true
@@ -1230,6 +1201,160 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                   <div
                                     className={classNames(
                                       projectcss.all,
+                                      sty.freeBox__l9XrL
+                                    )}
+                                  >
+                                    <h4
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.h4,
+                                        projectcss.__wab_text,
+                                        sty.h4__vcx2I
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        <React.Fragment>
+                                          {"Popis ud\u00e1losti"}
+                                        </React.Fragment>
+                                        <span
+                                          className={
+                                            "plasmic_default__all plasmic_default__span"
+                                          }
+                                          style={{
+                                            color: "var(--token-PYK52BJYJXxZ)"
+                                          }}
+                                        >
+                                          {"*"}
+                                        </span>
+                                      </React.Fragment>
+                                    </h4>
+                                    <FormItemWrapper
+                                      className={classNames(
+                                        "__wab_instance",
+                                        sty.formField___6XVgg
+                                      )}
+                                      label={
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__myjIo
+                                          )}
+                                        >
+                                          {"Label"}
+                                        </div>
+                                      }
+                                      noLabel={true}
+                                      noStyle={true}
+                                    >
+                                      <TextAreaWhite
+                                        data-plasmic-name={"description"}
+                                        data-plasmic-override={
+                                          overrides.description
+                                        }
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.description
+                                        )}
+                                        onChange={async (...eventArgs: any) => {
+                                          ((...eventArgs) => {
+                                            generateStateOnChangeProp($state, [
+                                              "description",
+                                              "value"
+                                            ])(
+                                              (e => e.target?.value).apply(
+                                                null,
+                                                eventArgs
+                                              )
+                                            );
+                                          }).apply(null, eventArgs);
+
+                                          if (
+                                            eventArgs.length > 1 &&
+                                            eventArgs[1] &&
+                                            eventArgs[1]._plasmic_state_init_
+                                          ) {
+                                            return;
+                                          }
+
+                                          (async event => {
+                                            const $steps = {};
+
+                                            $steps["updateNameValue"] = true
+                                              ? (() => {
+                                                  const actionArgs = {
+                                                    variable: {
+                                                      objRoot: $state,
+                                                      variablePath: [
+                                                        "name",
+                                                        "value"
+                                                      ]
+                                                    },
+                                                    operation: 0
+                                                  };
+                                                  return (({
+                                                    variable,
+                                                    value,
+                                                    startIndex,
+                                                    deleteCount
+                                                  }) => {
+                                                    if (!variable) {
+                                                      return;
+                                                    }
+                                                    const {
+                                                      objRoot,
+                                                      variablePath
+                                                    } = variable;
+
+                                                    $stateSet(
+                                                      objRoot,
+                                                      variablePath,
+                                                      value
+                                                    );
+                                                    return value;
+                                                  })?.apply(null, [actionArgs]);
+                                                })()
+                                              : undefined;
+                                            if (
+                                              $steps["updateNameValue"] !=
+                                                null &&
+                                              typeof $steps[
+                                                "updateNameValue"
+                                              ] === "object" &&
+                                              typeof $steps["updateNameValue"]
+                                                .then === "function"
+                                            ) {
+                                              $steps["updateNameValue"] =
+                                                await $steps["updateNameValue"];
+                                            }
+                                          }).apply(null, eventArgs);
+                                        }}
+                                        placeholder={(() => {
+                                          try {
+                                            return "Zde napište informace k vaší události\n(max. 1 000 znaků)";
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                        value={
+                                          generateStateValueProp($state, [
+                                            "description",
+                                            "value"
+                                          ]) ?? ""
+                                        }
+                                      />
+                                    </FormItemWrapper>
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
                                       sty.freeBox__cJeyV
                                     )}
                                   >
@@ -1366,13 +1491,6 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                         }
                                       })()}
                                       preserve={false}
-                                      rules={[
-                                        {
-                                          ruleType: "required",
-                                          message:
-                                            "Je pot\u0159eba vybrat jednu mo\u017enost"
-                                        }
-                                      ]}
                                       validateTrigger={["onSubmit"]}
                                     >
                                       <AntdSelect
@@ -1900,7 +2018,7 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                             sty.text__kj2L9
                                           )}
                                         >
-                                          {"vhodn\u00e9 pro OZP"}
+                                          {"pro OZP"}
                                         </div>
                                       </AntdCheckbox>
                                       <AntdCheckbox
@@ -1960,7 +2078,7 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                             sty.text__gJrcC
                                           )}
                                         >
-                                          {"option 1"}
+                                          {"pro rodinu"}
                                         </div>
                                       </AntdCheckbox>
                                       <AntdCheckbox
@@ -1990,127 +2108,7 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                             sty.text__oDqd5
                                           )}
                                         >
-                                          {"option 2"}
-                                        </div>
-                                      </AntdCheckbox>
-                                      <AntdCheckbox
-                                        data-plasmic-name={"checkbox5"}
-                                        data-plasmic-override={
-                                          overrides.checkbox5
-                                        }
-                                        checked={generateStateValueProp(
-                                          $state,
-                                          ["checkbox5", "checked"]
-                                        )}
-                                        className={classNames(
-                                          "__wab_instance",
-                                          sty.checkbox5
-                                        )}
-                                        onChange={async (...eventArgs: any) => {
-                                          generateStateOnChangeProp($state, [
-                                            "checkbox5",
-                                            "checked"
-                                          ]).apply(null, eventArgs);
-                                        }}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__ceNq
-                                          )}
-                                        >
-                                          {"option 3"}
-                                        </div>
-                                      </AntdCheckbox>
-                                      <AntdCheckbox
-                                        data-plasmic-name={"checkbox6"}
-                                        data-plasmic-override={
-                                          overrides.checkbox6
-                                        }
-                                        checked={generateStateValueProp(
-                                          $state,
-                                          ["checkbox6", "checked"]
-                                        )}
-                                        className={classNames(
-                                          "__wab_instance",
-                                          sty.checkbox6
-                                        )}
-                                        onChange={async (...eventArgs: any) => {
-                                          generateStateOnChangeProp($state, [
-                                            "checkbox6",
-                                            "checked"
-                                          ]).apply(null, eventArgs);
-                                        }}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text___74R4D
-                                          )}
-                                        >
-                                          {"option 4"}
-                                        </div>
-                                      </AntdCheckbox>
-                                      <AntdCheckbox
-                                        data-plasmic-name={"checkbox7"}
-                                        data-plasmic-override={
-                                          overrides.checkbox7
-                                        }
-                                        checked={generateStateValueProp(
-                                          $state,
-                                          ["checkbox7", "checked"]
-                                        )}
-                                        className={classNames(
-                                          "__wab_instance",
-                                          sty.checkbox7
-                                        )}
-                                        onChange={async (...eventArgs: any) => {
-                                          generateStateOnChangeProp($state, [
-                                            "checkbox7",
-                                            "checked"
-                                          ]).apply(null, eventArgs);
-                                        }}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text___7MqB
-                                          )}
-                                        >
-                                          {"option 5"}
-                                        </div>
-                                      </AntdCheckbox>
-                                      <AntdCheckbox
-                                        data-plasmic-name={"checkbox8"}
-                                        data-plasmic-override={
-                                          overrides.checkbox8
-                                        }
-                                        checked={generateStateValueProp(
-                                          $state,
-                                          ["checkbox8", "checked"]
-                                        )}
-                                        className={classNames(
-                                          "__wab_instance",
-                                          sty.checkbox8
-                                        )}
-                                        onChange={async (...eventArgs: any) => {
-                                          generateStateOnChangeProp($state, [
-                                            "checkbox8",
-                                            "checked"
-                                          ]).apply(null, eventArgs);
-                                        }}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__f6UQk
-                                          )}
-                                        >
-                                          {"option 6"}
+                                          {"pro \u017eeny"}
                                         </div>
                                       </AntdCheckbox>
                                     </div>
@@ -2135,7 +2133,7 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                   <div
                                     className={classNames(
                                       projectcss.all,
-                                      sty.freeBox__rZF8
+                                      sty.freeBox__mZQxS
                                     )}
                                   >
                                     <h4
@@ -2143,7 +2141,7 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                         projectcss.all,
                                         projectcss.h4,
                                         projectcss.__wab_text,
-                                        sty.h4__iyIr
+                                        sty.h4__eXaz1
                                       )}
                                     >
                                       <React.Fragment>
@@ -2163,16 +2161,16 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                       </React.Fragment>
                                     </h4>
                                     <TextInputWhite
-                                      data-plasmic-name={"street"}
-                                      data-plasmic-override={overrides.street}
+                                      data-plasmic-name={"street2"}
+                                      data-plasmic-override={overrides.street2}
                                       className={classNames(
                                         "__wab_instance",
-                                        sty.street
+                                        sty.street2
                                       )}
                                       onChange={async (...eventArgs: any) => {
                                         ((...eventArgs) => {
                                           generateStateOnChangeProp($state, [
-                                            "street",
+                                            "street2",
                                             "value"
                                           ])(
                                             (e => e.target?.value).apply(
@@ -2194,7 +2192,7 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                       type={"text"}
                                       value={
                                         generateStateValueProp($state, [
-                                          "street",
+                                          "street2",
                                           "value"
                                         ]) ?? ""
                                       }
@@ -2754,86 +2752,169 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                   <div
                                     className={classNames(
                                       projectcss.all,
-                                      sty.freeBox__l9XrL
+                                      sty.freeBox__rZF8
                                     )}
                                   >
-                                    <h4
+                                    <div
                                       className={classNames(
                                         projectcss.all,
-                                        projectcss.h4,
-                                        projectcss.__wab_text,
-                                        sty.h4__vcx2I
+                                        sty.freeBox__xto8O
                                       )}
                                     >
-                                      {"Popis aktivity:"}
-                                    </h4>
-                                    <FormItemWrapper
-                                      className={classNames(
-                                        "__wab_instance",
-                                        sty.formField__zZed2
-                                      )}
-                                      label={
+                                      <h4
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.h4,
+                                          projectcss.__wab_text,
+                                          sty.h4__iyIr
+                                        )}
+                                      >
+                                        {"Odkaz na mapu\r"}
+                                      </h4>
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__mgc5F
+                                        )}
+                                      >
+                                        <h4
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.h4,
+                                            projectcss.__wab_text,
+                                            sty.h4__yfPv3
+                                          )}
+                                        >
+                                          {"(google/seznam)"}
+                                        </h4>
+                                      </div>
+                                    </div>
+                                    <TextInputWhite
+                                      data-plasmic-name={"mapLocation"}
+                                      data-plasmic-override={
+                                        overrides.mapLocation
+                                      }
+                                      color={"cleanWhite"}
+                                      onChange={async (...eventArgs: any) => {
+                                        ((...eventArgs) => {
+                                          generateStateOnChangeProp($state, [
+                                            "mapLocation",
+                                            "value"
+                                          ])(
+                                            (e => e.target?.value).apply(
+                                              null,
+                                              eventArgs
+                                            )
+                                          );
+                                        }).apply(null, eventArgs);
+
+                                        if (
+                                          eventArgs.length > 1 &&
+                                          eventArgs[1] &&
+                                          eventArgs[1]._plasmic_state_init_
+                                        ) {
+                                          return;
+                                        }
+                                      }}
+                                      placeholder={
+                                        "Vyberte um\u00edst\u011bn\u00ed va\u0161\u00ed ud\u00e1losti na map\u011b a vlo\u017ete zde odkaz"
+                                      }
+                                      required={true}
+                                      type={"text"}
+                                      value={
+                                        generateStateValueProp($state, [
+                                          "mapLocation",
+                                          "value"
+                                        ]) ?? ""
+                                      }
+                                    />
+
+                                    {false ? (
+                                      <AntdButton
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.button__vh47N
+                                        )}
+                                        onClick={async () => {
+                                          const $steps = {};
+
+                                          $steps["runActionOnPasteClipboard"] =
+                                            true
+                                              ? (() => {
+                                                  const actionArgs = {
+                                                    tplRef: "pasteClipboard",
+                                                    action: "triggerPaste"
+                                                  };
+                                                  return (({
+                                                    tplRef,
+                                                    action,
+                                                    args
+                                                  }) => {
+                                                    return $refs?.[tplRef]?.[
+                                                      action
+                                                    ]?.(...(args ?? []));
+                                                  })?.apply(null, [actionArgs]);
+                                                })()
+                                              : undefined;
+                                          if (
+                                            $steps[
+                                              "runActionOnPasteClipboard"
+                                            ] != null &&
+                                            typeof $steps[
+                                              "runActionOnPasteClipboard"
+                                            ] === "object" &&
+                                            typeof $steps[
+                                              "runActionOnPasteClipboard"
+                                            ].then === "function"
+                                          ) {
+                                            $steps[
+                                              "runActionOnPasteClipboard"
+                                            ] = await $steps[
+                                              "runActionOnPasteClipboard"
+                                            ];
+                                          }
+                                        }}
+                                      >
                                         <div
                                           className={classNames(
                                             projectcss.all,
                                             projectcss.__wab_text,
-                                            sty.text___7HpcX
+                                            sty.text__qSfZw
                                           )}
                                         >
-                                          {"Label"}
+                                          {"Vlo\u017eit odkaz"}
                                         </div>
-                                      }
-                                      name={"desVal"}
-                                      noLabel={true}
-                                      noStyle={true}
-                                    >
-                                      {(() => {
-                                        const child$Props = {
-                                          autoSize: true,
-                                          className: classNames(
-                                            "__wab_instance",
-                                            sty.description
-                                          ),
-                                          onChange: async (
-                                            ...eventArgs: any
-                                          ) => {
-                                            generateStateOnChangePropForCodeComponents(
-                                              $state,
-                                              "value",
-                                              ["description", "value"],
-                                              AntdTextArea_Helpers
-                                            ).apply(null, eventArgs);
-                                          },
-                                          value: generateStateValueProp(
-                                            $state,
-                                            ["description", "value"]
-                                          )
-                                        };
-                                        initializeCodeComponentStates(
-                                          $state,
-                                          [
-                                            {
-                                              name: "value",
-                                              plasmicStateName:
-                                                "description.value"
+                                      </AntdButton>
+                                    ) : null}
+                                    {false ? (
+                                      <PasteClipboard
+                                        data-plasmic-name={"pasteClipboard"}
+                                        data-plasmic-override={
+                                          overrides.pasteClipboard
+                                        }
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.pasteClipboard
+                                        )}
+                                        pastePath={(() => {
+                                          try {
+                                            return $state.mapLocation.value;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
                                             }
-                                          ],
-                                          [],
-                                          AntdTextArea_Helpers ?? {},
-                                          child$Props
-                                        );
-
-                                        return (
-                                          <AntdTextArea
-                                            data-plasmic-name={"description"}
-                                            data-plasmic-override={
-                                              overrides.description
-                                            }
-                                            {...child$Props}
-                                          />
-                                        );
-                                      })()}
-                                    </FormItemWrapper>
+                                            throw e;
+                                          }
+                                        })()}
+                                        ref={ref => {
+                                          $refs["pasteClipboard"] = ref;
+                                        }}
+                                      />
+                                    ) : null}
                                   </div>
                                 </div>
                               </div>
@@ -2878,7 +2959,7 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                     <React.Fragment>
                                       <React.Fragment>
                                         {
-                                          "P\u0159idejte hlavn\u00ed fotku ud\u00e1losti"
+                                          "P\u0159idejte hlavn\u00ed fotografii ud\u00e1losti"
                                         }
                                       </React.Fragment>
                                       <span
@@ -3961,221 +4042,200 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                         }
                       })()}
                     >
-                      <DataFetcher
-                        data-plasmic-name={"httpRestApiFetcher"}
-                        data-plasmic-override={overrides.httpRestApiFetcher}
-                        className={classNames(
-                          "__wab_instance",
-                          sty.httpRestApiFetcher
-                        )}
-                        dataName={"returnItem"}
-                        errorDisplay={
-                          <DataCtxReader__>
-                            {$ctx => "Error fetching data"}
-                          </DataCtxReader__>
-                        }
-                        errorName={"fetchError"}
-                        headers={{
-                          "Content-Type": "application/json",
-                          apikey:
-                            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJucmZkeHRzZHZteGhqc29xb2lkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjE4MjQyNTcsImV4cCI6MjAzNzQwMDI1N30.N-1_fY2KLrl9sxmeM8z3bRc-b0ksQ0C4IWQpugCs65I"
-                        }}
-                        loadingDisplay={
-                          <DataCtxReader__>
-                            {$ctx => "Loading..."}
-                          </DataCtxReader__>
-                        }
-                        method={"GET"}
-                        noLayout={false}
-                        url={(() => {
-                          try {
-                            return (
-                              "https://rnrfdxtsdvmxhjsoqoid.supabase.co/rest/v1/events?webUrl=eq." +
-                              $state.previewUrl
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
+                      {($state.fade === true ? true : false) ? (
+                        <DataFetcher
+                          data-plasmic-name={"httpRestApiFetcher"}
+                          data-plasmic-override={overrides.httpRestApiFetcher}
+                          className={classNames(
+                            "__wab_instance",
+                            sty.httpRestApiFetcher
+                          )}
+                          dataName={"returnItem"}
+                          errorDisplay={
+                            <DataCtxReader__>
+                              {$ctx => "Error fetching data"}
+                            </DataCtxReader__>
                           }
-                        })()}
-                      >
-                        <DataCtxReader__>
-                          {$ctx => (
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__cWlsf
-                              )}
-                            >
-                              <h3
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.h3,
-                                  projectcss.__wab_text,
-                                  sty.h3__csusy
-                                )}
-                              >
-                                {
-                                  "A m\u00e1te hotovo! Va\u0161e ud\u00e1lost bude brzy online."
-                                }
-                              </h3>
-                              <h3
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.h3,
-                                  projectcss.__wab_text,
-                                  sty.h3__wMlQk
-                                )}
-                                onClick={async event => {
-                                  const $steps = {};
-
-                                  $steps["postgresGetList"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          dataOp: {
-                                            sourceId: "f8Ug9pq9YCTH5iNERcsX8T",
-                                            opId: "d9cf0cd1-6cc7-4012-8525-1e7118ea46a7",
-                                            userArgs: {},
-                                            cacheKey: null,
-                                            invalidatedKeys: null,
-                                            roleId: null
-                                          }
-                                        };
-                                        return (async ({
-                                          dataOp,
-                                          continueOnError
-                                        }) => {
-                                          try {
-                                            const response =
-                                              await executePlasmicDataOp(
-                                                dataOp,
-                                                {
-                                                  userAuthToken:
-                                                    dataSourcesCtx?.userAuthToken,
-                                                  user: dataSourcesCtx?.user
-                                                }
-                                              );
-                                            await plasmicInvalidate(
-                                              dataOp.invalidatedKeys
-                                            );
-                                            return response;
-                                          } catch (e) {
-                                            if (!continueOnError) {
-                                              throw e;
-                                            }
-                                            return e;
-                                          }
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                  if (
-                                    $steps["postgresGetList"] != null &&
-                                    typeof $steps["postgresGetList"] ===
-                                      "object" &&
-                                    typeof $steps["postgresGetList"].then ===
-                                      "function"
-                                  ) {
-                                    $steps["postgresGetList"] = await $steps[
-                                      "postgresGetList"
-                                    ];
-                                  }
-
-                                  $steps["updateEventPreview"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          variable: {
-                                            objRoot: $state,
-                                            variablePath: ["eventPreview"]
-                                          },
-                                          operation: 0,
-                                          value: $steps.postgresGetList
-                                        };
-                                        return (({
-                                          variable,
-                                          value,
-                                          startIndex,
-                                          deleteCount
-                                        }) => {
-                                          if (!variable) {
-                                            return;
-                                          }
-                                          const { objRoot, variablePath } =
-                                            variable;
-
-                                          $stateSet(
-                                            objRoot,
-                                            variablePath,
-                                            value
-                                          );
-                                          return value;
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                  if (
-                                    $steps["updateEventPreview"] != null &&
-                                    typeof $steps["updateEventPreview"] ===
-                                      "object" &&
-                                    typeof $steps["updateEventPreview"].then ===
-                                      "function"
-                                  ) {
-                                    $steps["updateEventPreview"] = await $steps[
-                                      "updateEventPreview"
-                                    ];
-                                  }
-                                }}
-                              >
-                                <React.Fragment>
-                                  <span
-                                    className={
-                                      "plasmic_default__all plasmic_default__span"
-                                    }
-                                    style={{
-                                      fontWeight: 400,
-                                      fontStyle: "italic"
-                                    }}
-                                  >
-                                    {
-                                      '"D\u016fraz na detail p\u0159in\u00e1\u0161\u00ed trval\u00e9 v\u00fdsledky."'
-                                    }
-                                  </span>
-                                </React.Fragment>
-                              </h3>
+                          errorName={"fetchError"}
+                          headers={{
+                            "Content-Type": "application/json",
+                            apikey:
+                              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJucmZkeHRzZHZteGhqc29xb2lkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjE4MjQyNTcsImV4cCI6MjAzNzQwMDI1N30.N-1_fY2KLrl9sxmeM8z3bRc-b0ksQ0C4IWQpugCs65I"
+                          }}
+                          loadingDisplay={
+                            <DataCtxReader__>
+                              {$ctx => "Loading..."}
+                            </DataCtxReader__>
+                          }
+                          method={"GET"}
+                          noLayout={false}
+                          url={(() => {
+                            try {
+                              return (
+                                "https://rnrfdxtsdvmxhjsoqoid.supabase.co/rest/v1/events?webUrl=eq." +
+                                $state.previewUrl
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()}
+                        >
+                          <DataCtxReader__>
+                            {$ctx => (
                               <div
                                 className={classNames(
                                   projectcss.all,
-                                  sty.freeBox___8Shw5
+                                  sty.freeBox__cWlsf
                                 )}
-                                style={(() => {
-                                  try {
-                                    return {
-                                      gap: "2vh"
-                                    };
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })()}
                               >
+                                <h3
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.h3,
+                                    projectcss.__wab_text,
+                                    sty.h3__csusy
+                                  )}
+                                >
+                                  {
+                                    "A m\u00e1te hotovo! Va\u0161e ud\u00e1lost bude brzy online."
+                                  }
+                                </h3>
+                                <h3
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.h3,
+                                    projectcss.__wab_text,
+                                    sty.h3__wMlQk
+                                  )}
+                                  onClick={async event => {
+                                    const $steps = {};
+
+                                    $steps["postgresGetList"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            dataOp: {
+                                              sourceId:
+                                                "f8Ug9pq9YCTH5iNERcsX8T",
+                                              opId: "d9cf0cd1-6cc7-4012-8525-1e7118ea46a7",
+                                              userArgs: {},
+                                              cacheKey: null,
+                                              invalidatedKeys: null,
+                                              roleId: null
+                                            }
+                                          };
+                                          return (async ({
+                                            dataOp,
+                                            continueOnError
+                                          }) => {
+                                            try {
+                                              const response =
+                                                await executePlasmicDataOp(
+                                                  dataOp,
+                                                  {
+                                                    userAuthToken:
+                                                      dataSourcesCtx?.userAuthToken,
+                                                    user: dataSourcesCtx?.user
+                                                  }
+                                                );
+                                              await plasmicInvalidate(
+                                                dataOp.invalidatedKeys
+                                              );
+                                              return response;
+                                            } catch (e) {
+                                              if (!continueOnError) {
+                                                throw e;
+                                              }
+                                              return e;
+                                            }
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["postgresGetList"] != null &&
+                                      typeof $steps["postgresGetList"] ===
+                                        "object" &&
+                                      typeof $steps["postgresGetList"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["postgresGetList"] = await $steps[
+                                        "postgresGetList"
+                                      ];
+                                    }
+
+                                    $steps["updateEventPreview"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: ["eventPreview"]
+                                            },
+                                            operation: 0,
+                                            value: $steps.postgresGetList
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateEventPreview"] != null &&
+                                      typeof $steps["updateEventPreview"] ===
+                                        "object" &&
+                                      typeof $steps["updateEventPreview"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["updateEventPreview"] =
+                                        await $steps["updateEventPreview"];
+                                    }
+                                  }}
+                                >
+                                  <React.Fragment>
+                                    <span
+                                      className={
+                                        "plasmic_default__all plasmic_default__span"
+                                      }
+                                      style={{
+                                        fontWeight: 400,
+                                        fontStyle: "italic"
+                                      }}
+                                    >
+                                      {
+                                        '"D\u016fraz na detail p\u0159in\u00e1\u0161\u00ed trval\u00e9 v\u00fdsledky."'
+                                      }
+                                    </span>
+                                  </React.Fragment>
+                                </h3>
                                 <div
                                   className={classNames(
                                     projectcss.all,
-                                    sty.freeBox___1Smfz
+                                    sty.freeBox___8Shw5
                                   )}
                                   style={(() => {
                                     try {
                                       return {
-                                        gap: "1vh"
+                                        gap: "2vh"
                                       };
                                     } catch (e) {
                                       if (
@@ -4192,184 +4252,248 @@ function PlasmicDashboardProviderNewEvent__RenderFunc(props: {
                                   <div
                                     className={classNames(
                                       projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__k3BG8
+                                      sty.freeBox___1Smfz
                                     )}
-                                  >
-                                    <React.Fragment>
-                                      {(() => {
-                                        try {
-                                          return $ctx.returnItem
-                                            ? "Zde si můžete Vaši událost\n" +
-                                                $ctx.returnItem[0].name +
-                                                "\nprohlédnout"
-                                            : "Zde si můžete Vaši událost prohlédnout";
-                                        } catch (e) {
-                                          if (
-                                            e instanceof TypeError ||
-                                            e?.plasmicType ===
-                                              "PlasmicUndefinedDataError"
-                                          ) {
-                                            return "Zde si m\u016f\u017eete Va\u0161i ud\u00e1losti prohl\u00e9dnout.";
-                                          }
-                                          throw e;
+                                    style={(() => {
+                                      try {
+                                        return {
+                                          gap: "1vh"
+                                        };
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
                                         }
-                                      })()}
-                                    </React.Fragment>
-                                  </div>
-                                  <AntdButton
-                                    className={classNames(
-                                      "__wab_instance",
-                                      sty.button__bnk02
-                                    )}
-                                    onClick={async () => {
-                                      const $steps = {};
-
-                                      $steps["goToEvent"] = true
-                                        ? (() => {
-                                            const actionArgs = {
-                                              destination: `/${(() => {
-                                                try {
-                                                  return JSON.parse(
-                                                    localStorage.getItem(
-                                                      "queryCache"
-                                                    )
-                                                  ).category.find(
-                                                    item =>
-                                                      item.name ===
-                                                      $ctx.returnItem[0]
-                                                        .category
-                                                  ).webURL;
-                                                } catch (e) {
-                                                  if (
-                                                    e instanceof TypeError ||
-                                                    e?.plasmicType ===
-                                                      "PlasmicUndefinedDataError"
-                                                  ) {
-                                                    return undefined;
-                                                  }
-                                                  throw e;
-                                                }
-                                              })()}/${(() => {
-                                                try {
-                                                  return $ctx.returnItem[0]
-                                                    .webUrl;
-                                                } catch (e) {
-                                                  if (
-                                                    e instanceof TypeError ||
-                                                    e?.plasmicType ===
-                                                      "PlasmicUndefinedDataError"
-                                                  ) {
-                                                    return undefined;
-                                                  }
-                                                  throw e;
-                                                }
-                                              })()}`
-                                            };
-                                            return (({ destination }) => {
-                                              if (
-                                                typeof destination ===
-                                                  "string" &&
-                                                destination.startsWith("#")
-                                              ) {
-                                                document
-                                                  .getElementById(
-                                                    destination.substr(1)
-                                                  )
-                                                  .scrollIntoView({
-                                                    behavior: "smooth"
-                                                  });
-                                              } else {
-                                                __nextRouter?.push(destination);
-                                              }
-                                            })?.apply(null, [actionArgs]);
-                                          })()
-                                        : undefined;
-                                      if (
-                                        $steps["goToEvent"] != null &&
-                                        typeof $steps["goToEvent"] ===
-                                          "object" &&
-                                        typeof $steps["goToEvent"].then ===
-                                          "function"
-                                      ) {
-                                        $steps["goToEvent"] = await $steps[
-                                          "goToEvent"
-                                        ];
+                                        throw e;
                                       }
-                                    }}
+                                    })()}
                                   >
                                     <div
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text__h3SVz
+                                        sty.text__k3BG8
                                       )}
                                     >
-                                      {"P\u0159ej\u00edt na ud\u00e1lost"}
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return $ctx.returnItem
+                                              ? "Zde si můžete Vaši událost\n" +
+                                                  $ctx.returnItem[0].name +
+                                                  "\nprohlédnout"
+                                              : "Zde si můžete Vaši událost prohlédnout";
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "Zde si m\u016f\u017eete Va\u0161i ud\u00e1losti prohl\u00e9dnout.";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
                                     </div>
-                                  </AntdButton>
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__zPrly
-                                  )}
-                                >
-                                  <React.Fragment>
-                                    <React.Fragment>{"Po "}</React.Fragment>
-                                    <span
-                                      className={
-                                        "plasmic_default__all plasmic_default__span"
-                                      }
-                                      style={{ fontWeight: 700 }}
+                                    <AntdButton
+                                      className={classNames(
+                                        "__wab_instance",
+                                        sty.button__bnk02
+                                      )}
+                                      onClick={async () => {
+                                        const $steps = {};
+
+                                        $steps["goToEvent"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                destination: `/${(() => {
+                                                  try {
+                                                    return JSON.parse(
+                                                      localStorage.getItem(
+                                                        "queryCache"
+                                                      )
+                                                    ).category.find(
+                                                      item =>
+                                                        item.name ===
+                                                        $ctx.returnItem[0]
+                                                          .category
+                                                    ).webURL;
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return undefined;
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()}/${(() => {
+                                                  try {
+                                                    return $ctx.returnItem[0]
+                                                      .webUrl;
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return undefined;
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()}`
+                                              };
+                                              return (({ destination }) => {
+                                                if (
+                                                  typeof destination ===
+                                                    "string" &&
+                                                  destination.startsWith("#")
+                                                ) {
+                                                  document
+                                                    .getElementById(
+                                                      destination.substr(1)
+                                                    )
+                                                    .scrollIntoView({
+                                                      behavior: "smooth"
+                                                    });
+                                                } else {
+                                                  __nextRouter?.push(
+                                                    destination
+                                                  );
+                                                }
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["goToEvent"] != null &&
+                                          typeof $steps["goToEvent"] ===
+                                            "object" &&
+                                          typeof $steps["goToEvent"].then ===
+                                            "function"
+                                        ) {
+                                          $steps["goToEvent"] = await $steps[
+                                            "goToEvent"
+                                          ];
+                                        }
+                                      }}
                                     >
-                                      {"ov\u011b\u0159en\u00ed \u00fa\u010dtu"}
-                                    </span>
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__h3SVz
+                                        )}
+                                      >
+                                        {"P\u0159ej\u00edt na ud\u00e1lost"}
+                                      </div>
+                                    </AntdButton>
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__zPrly
+                                    )}
+                                  >
                                     <React.Fragment>
-                                      {
-                                        " budete ji\u017e moci spravovat sv\u016fj \u00fa\u010det a p\u0159ipravovat sv\u00e9 aktivity."
-                                      }
+                                      <React.Fragment>{"Po "}</React.Fragment>
+                                      <span
+                                        className={
+                                          "plasmic_default__all plasmic_default__span"
+                                        }
+                                        style={{ fontWeight: 700 }}
+                                      >
+                                        {
+                                          "ov\u011b\u0159en\u00ed \u00fa\u010dtu"
+                                        }
+                                      </span>
+                                      <React.Fragment>
+                                        {
+                                          " budete ji\u017e moci spravovat sv\u016fj \u00fa\u010det a p\u0159ipravovat sv\u00e9 aktivity."
+                                        }
+                                      </React.Fragment>
                                     </React.Fragment>
-                                  </React.Fragment>
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__t3Obk
-                                  )}
-                                >
-                                  <React.Fragment>
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__t3Obk
+                                    )}
+                                  >
                                     <React.Fragment>
-                                      {"\nV n\u00e1sleduj\u00edc\u00edch "}
+                                      <React.Fragment>
+                                        {"\nV n\u00e1sleduj\u00edc\u00edch "}
+                                      </React.Fragment>
+                                      <span
+                                        className={
+                                          "plasmic_default__all plasmic_default__span"
+                                        }
+                                        style={{ fontWeight: 700 }}
+                                      >
+                                        {"pracovn\u00edch dnech"}
+                                      </span>
+                                      <React.Fragment>
+                                        {
+                                          " V\u00e1s budeme kontaktovat a ov\u011b\u0159\u00edme si, \u017ee jste to sku\u0159e\u010dn\u011b Vy!\nN\u00e1sledn\u011b budete moci vyu\u017e\u00edvat V\u00e1\u0161 \u00fa\u010det naplno."
+                                        }
+                                      </React.Fragment>
                                     </React.Fragment>
-                                    <span
-                                      className={
-                                        "plasmic_default__all plasmic_default__span"
-                                      }
-                                      style={{ fontWeight: 700 }}
-                                    >
-                                      {"pracovn\u00edch dnech"}
-                                    </span>
-                                    <React.Fragment>
-                                      {
-                                        " V\u00e1s budeme kontaktovat a ov\u011b\u0159\u00edme si, \u017ee jste to sku\u0159e\u010dn\u011b Vy!\nN\u00e1sledn\u011b budete moci vyu\u017e\u00edvat V\u00e1\u0161 \u00fa\u010det naplno."
-                                      }
-                                    </React.Fragment>
-                                  </React.Fragment>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          )}
-                        </DataCtxReader__>
-                      </DataFetcher>
+                            )}
+                          </DataCtxReader__>
+                        </DataFetcher>
+                      ) : null}
                     </div>
                   </div>
                 </section>
               </div>
             </main>
           </section>
+          <SideEffect
+            data-plasmic-name={"sideEffect"}
+            data-plasmic-override={overrides.sideEffect}
+            className={classNames("__wab_instance", sty.sideEffect)}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["updateSetId"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["setId"]
+                      },
+                      operation: 0,
+                      value: Math.random().toString(36).substr(2, 8)
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateSetId"] != null &&
+                typeof $steps["updateSetId"] === "object" &&
+                typeof $steps["updateSetId"].then === "function"
+              ) {
+                $steps["updateSetId"] = await $steps["updateSetId"];
+              }
+            }}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -4387,6 +4511,7 @@ const PlasmicDescendants = {
     "form",
     "left",
     "name",
+    "description",
     "date2",
     "repeat",
     "startTime",
@@ -4398,11 +4523,7 @@ const PlasmicDescendants = {
     "checkbox2",
     "checkbox3",
     "checkbox4",
-    "checkbox5",
-    "checkbox6",
-    "checkbox7",
-    "checkbox8",
-    "street",
+    "street2",
     "citySelect",
     "adPop",
     "adOr",
@@ -4410,7 +4531,8 @@ const PlasmicDescendants = {
     "categorySelect",
     "subCategory",
     "subCategorySelect",
-    "description",
+    "mapLocation",
+    "pasteClipboard",
     "right",
     "uploadImage",
     "frame",
@@ -4420,7 +4542,8 @@ const PlasmicDescendants = {
     "uploadImagesButton",
     "uploadImages",
     "left2",
-    "httpRestApiFetcher"
+    "httpRestApiFetcher",
+    "sideEffect"
   ],
   header: ["header"],
   main: [
@@ -4431,6 +4554,7 @@ const PlasmicDescendants = {
     "form",
     "left",
     "name",
+    "description",
     "date2",
     "repeat",
     "startTime",
@@ -4442,11 +4566,7 @@ const PlasmicDescendants = {
     "checkbox2",
     "checkbox3",
     "checkbox4",
-    "checkbox5",
-    "checkbox6",
-    "checkbox7",
-    "checkbox8",
-    "street",
+    "street2",
     "citySelect",
     "adPop",
     "adOr",
@@ -4454,7 +4574,8 @@ const PlasmicDescendants = {
     "categorySelect",
     "subCategory",
     "subCategorySelect",
-    "description",
+    "mapLocation",
+    "pasteClipboard",
     "right",
     "uploadImage",
     "frame",
@@ -4473,6 +4594,7 @@ const PlasmicDescendants = {
     "form",
     "left",
     "name",
+    "description",
     "date2",
     "repeat",
     "startTime",
@@ -4484,11 +4606,7 @@ const PlasmicDescendants = {
     "checkbox2",
     "checkbox3",
     "checkbox4",
-    "checkbox5",
-    "checkbox6",
-    "checkbox7",
-    "checkbox8",
-    "street",
+    "street2",
     "citySelect",
     "adPop",
     "adOr",
@@ -4496,7 +4614,8 @@ const PlasmicDescendants = {
     "categorySelect",
     "subCategory",
     "subCategorySelect",
-    "description",
+    "mapLocation",
+    "pasteClipboard",
     "right",
     "uploadImage",
     "frame",
@@ -4513,6 +4632,7 @@ const PlasmicDescendants = {
     "form",
     "left",
     "name",
+    "description",
     "date2",
     "repeat",
     "startTime",
@@ -4524,11 +4644,7 @@ const PlasmicDescendants = {
     "checkbox2",
     "checkbox3",
     "checkbox4",
-    "checkbox5",
-    "checkbox6",
-    "checkbox7",
-    "checkbox8",
-    "street",
+    "street2",
     "citySelect",
     "adPop",
     "adOr",
@@ -4536,7 +4652,8 @@ const PlasmicDescendants = {
     "categorySelect",
     "subCategory",
     "subCategorySelect",
-    "description",
+    "mapLocation",
+    "pasteClipboard",
     "right",
     "uploadImage",
     "frame",
@@ -4552,6 +4669,7 @@ const PlasmicDescendants = {
     "form",
     "left",
     "name",
+    "description",
     "date2",
     "repeat",
     "startTime",
@@ -4563,11 +4681,7 @@ const PlasmicDescendants = {
     "checkbox2",
     "checkbox3",
     "checkbox4",
-    "checkbox5",
-    "checkbox6",
-    "checkbox7",
-    "checkbox8",
-    "street",
+    "street2",
     "citySelect",
     "adPop",
     "adOr",
@@ -4575,7 +4689,8 @@ const PlasmicDescendants = {
     "categorySelect",
     "subCategory",
     "subCategorySelect",
-    "description",
+    "mapLocation",
+    "pasteClipboard",
     "right",
     "uploadImage",
     "frame",
@@ -4588,6 +4703,7 @@ const PlasmicDescendants = {
   left: [
     "left",
     "name",
+    "description",
     "date2",
     "repeat",
     "startTime",
@@ -4599,11 +4715,7 @@ const PlasmicDescendants = {
     "checkbox2",
     "checkbox3",
     "checkbox4",
-    "checkbox5",
-    "checkbox6",
-    "checkbox7",
-    "checkbox8",
-    "street",
+    "street2",
     "citySelect",
     "adPop",
     "adOr",
@@ -4611,9 +4723,11 @@ const PlasmicDescendants = {
     "categorySelect",
     "subCategory",
     "subCategorySelect",
-    "description"
+    "mapLocation",
+    "pasteClipboard"
   ],
   name: ["name"],
+  description: ["description"],
   date2: ["date2"],
   repeat: ["repeat"],
   startTime: ["startTime"],
@@ -4625,11 +4739,7 @@ const PlasmicDescendants = {
   checkbox2: ["checkbox2"],
   checkbox3: ["checkbox3"],
   checkbox4: ["checkbox4"],
-  checkbox5: ["checkbox5"],
-  checkbox6: ["checkbox6"],
-  checkbox7: ["checkbox7"],
-  checkbox8: ["checkbox8"],
-  street: ["street"],
+  street2: ["street2"],
   citySelect: ["citySelect"],
   adPop: ["adPop"],
   adOr: ["adOr"],
@@ -4637,7 +4747,8 @@ const PlasmicDescendants = {
   categorySelect: ["categorySelect"],
   subCategory: ["subCategory", "subCategorySelect"],
   subCategorySelect: ["subCategorySelect"],
-  description: ["description"],
+  mapLocation: ["mapLocation"],
+  pasteClipboard: ["pasteClipboard"],
   right: [
     "right",
     "uploadImage",
@@ -4656,7 +4767,8 @@ const PlasmicDescendants = {
   uploadImagesButton: ["uploadImagesButton"],
   uploadImages: ["uploadImages"],
   left2: ["left2", "httpRestApiFetcher"],
-  httpRestApiFetcher: ["httpRestApiFetcher"]
+  httpRestApiFetcher: ["httpRestApiFetcher"],
+  sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -4671,6 +4783,7 @@ type NodeDefaultElementType = {
   form: typeof FormWrapper;
   left: "div";
   name: typeof TextInputWhite;
+  description: typeof TextAreaWhite;
   date2: typeof CustomDatePicker;
   repeat: typeof AntdSelect;
   startTime: typeof TextInputWhite;
@@ -4682,11 +4795,7 @@ type NodeDefaultElementType = {
   checkbox2: typeof AntdCheckbox;
   checkbox3: typeof AntdCheckbox;
   checkbox4: typeof AntdCheckbox;
-  checkbox5: typeof AntdCheckbox;
-  checkbox6: typeof AntdCheckbox;
-  checkbox7: typeof AntdCheckbox;
-  checkbox8: typeof AntdCheckbox;
-  street: typeof TextInputWhite;
+  street2: typeof TextInputWhite;
   citySelect: typeof AntdSelect;
   adPop: typeof TextInputWhite;
   adOr: typeof TextInputWhite;
@@ -4694,7 +4803,8 @@ type NodeDefaultElementType = {
   categorySelect: typeof AntdSelect;
   subCategory: typeof FormItemWrapper;
   subCategorySelect: typeof AntdSelect;
-  description: typeof AntdTextArea;
+  mapLocation: typeof TextInputWhite;
+  pasteClipboard: typeof PasteClipboard;
   right: "div";
   uploadImage: typeof UploadImage;
   frame: "section";
@@ -4705,6 +4815,7 @@ type NodeDefaultElementType = {
   uploadImages: typeof UploadImages;
   left2: "div";
   httpRestApiFetcher: typeof DataFetcher;
+  sideEffect: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -4776,6 +4887,7 @@ export const PlasmicDashboardProviderNewEvent = Object.assign(
     form: makeNodeComponent("form"),
     left: makeNodeComponent("left"),
     _name: makeNodeComponent("name"),
+    description: makeNodeComponent("description"),
     date2: makeNodeComponent("date2"),
     repeat: makeNodeComponent("repeat"),
     startTime: makeNodeComponent("startTime"),
@@ -4787,11 +4899,7 @@ export const PlasmicDashboardProviderNewEvent = Object.assign(
     checkbox2: makeNodeComponent("checkbox2"),
     checkbox3: makeNodeComponent("checkbox3"),
     checkbox4: makeNodeComponent("checkbox4"),
-    checkbox5: makeNodeComponent("checkbox5"),
-    checkbox6: makeNodeComponent("checkbox6"),
-    checkbox7: makeNodeComponent("checkbox7"),
-    checkbox8: makeNodeComponent("checkbox8"),
-    street: makeNodeComponent("street"),
+    street2: makeNodeComponent("street2"),
     citySelect: makeNodeComponent("citySelect"),
     adPop: makeNodeComponent("adPop"),
     adOr: makeNodeComponent("adOr"),
@@ -4799,7 +4907,8 @@ export const PlasmicDashboardProviderNewEvent = Object.assign(
     categorySelect: makeNodeComponent("categorySelect"),
     subCategory: makeNodeComponent("subCategory"),
     subCategorySelect: makeNodeComponent("subCategorySelect"),
-    description: makeNodeComponent("description"),
+    mapLocation: makeNodeComponent("mapLocation"),
+    pasteClipboard: makeNodeComponent("pasteClipboard"),
     right: makeNodeComponent("right"),
     uploadImage: makeNodeComponent("uploadImage"),
     frame: makeNodeComponent("frame"),
@@ -4810,6 +4919,7 @@ export const PlasmicDashboardProviderNewEvent = Object.assign(
     uploadImages: makeNodeComponent("uploadImages"),
     left2: makeNodeComponent("left2"),
     httpRestApiFetcher: makeNodeComponent("httpRestApiFetcher"),
+    sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for PlasmicDashboardProviderNewEvent
     internalVariantProps: PlasmicDashboardProviderNewEvent__VariantProps,

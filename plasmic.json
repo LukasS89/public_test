@@ -1282,6 +1282,20 @@
           "cssFilePath": "plasmic/tady_to_zije_v_02/PlasmicCombobox.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "bs5zwM1jg0ey",
+          "name": "TextAreaWhite",
+          "type": "managed",
+          "projectId": "7YxWRrh3dN23tQ7PqjX2hp",
+          "renderModuleFilePath": "plasmic/tady_to_zije_v_02/PlasmicTextAreaWhite.tsx",
+          "importSpec": {
+            "modulePath": "TextAreaWhite.tsx"
+          },
+          "cssFilePath": "plasmic/tady_to_zije_v_02/PlasmicTextAreaWhite.module.css",
+          "scheme": "blackbox",
+          "componentType": "component",
+          "plumeType": "text-input"
         }
       ],
       "icons": [
@@ -1321,6 +1335,11 @@
           "id": "OQUUrzDJfp6l",
           "name": "image",
           "filePath": "../public/plasmic/tady_to_zije_v_02/images/image.webp"
+        },
+        {
+          "id": "_zodarqXNcXb",
+          "name": "test_map.png",
+          "filePath": "../public/plasmic/tady_to_zije_v_02/images/testMapPng.png"
         }
       ],
       "indirect": false,
@@ -1410,8 +1429,29 @@
           "name": "UploadImages",
           "displayName": "UploadImages",
           "componentImportPath": "@components/UploadImages"
+        },
+        {
+          "id": "1BC3HPtjmL5b",
+          "name": "PasteClipboard",
+          "displayName": "PasteClipboard",
+          "componentImportPath": "@components/PasteClipboard"
         }
       ],
+      "customFunctions": []
+    },
+    {
+      "projectId": "aEHVN5v6mfM4eovDsL8Z7d",
+      "projectApiToken": "whnW133t80zLKU3zunlnszewVOEyVOxXKzwV7BG0moXtgGeWc7ggKBeDRLZRWBfP5J3nqMN96EsKaTRQYp2aw",
+      "projectName": "copy-to-clipboard",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/copy_to_clipboard/plasmic.module.css",
+      "components": [],
+      "icons": [],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "codeComponents": [],
       "customFunctions": []
     }
   ],

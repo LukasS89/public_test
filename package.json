@@ -19,6 +19,7 @@
     "@plasmicpkgs/plasmic-query": "^0.0.227",
     "@plasmicpkgs/plasmic-rich-components": "^1.0.198",
     "@plasmicpkgs/react-aria": "^0.0.101",
+    "copy-to-clipboard": "^3.3.3",
     "next": "14.2.23",
     "react": "^18",
     "react-dom": "^18",
